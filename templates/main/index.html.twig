@@ -51,6 +51,25 @@
     <p>Lorem ipsum dolor sit amet. Eum rerum incidunt cum odio modi vel deleniti minus qui illo aspernatur At magnam eligendi. Aut facere voluptatem aut obcaecati laborum qui reprehenderit iste. Ab earum autem cum voluptatem sint est molestiae minima et illo fugiat vel cupiditate nihil aut optio voluptate in omnis dolorem? Sed voluptatem et corporis nihil quo sunt voluptas rem quod quia ea commodi repellendus qui soluta commodi vel eaque perspiciatis. Eos quisquam libero vel quos fugiat sed amet consequatur vel accusamus reprehenderit At illo maxime et accusantium temporibus. Eos voluptatibus veniam ut beatae eveniet et tempore corrupti eos itaque inventore ut omnis et voluptatem placeat ut magni necessitatibus. Qui itaque aspernatur est voluptatem velit aut error quibusdam et incidunt consectetur et voluptatem minus et itaque internos! Qui amet debitis cum numquam dolorum et dolorum commodi id autem sapiente ea necessitatibus iste ut mollitia voluptatem qui beatae aperiam. Id molestiae dolorum eum repellat omnis non dicta corporis hic architecto rerum et explicabo incidunt? Sit explicabo expedita cum excepturi molestias ut officiis nulla ab incidunt voluptas sit consectetur repudiandae sed eius neque non Quis ratione? Non minus rerum ad totam velit 33 assumenda illo ut sequi nulla et quas repudiandae.</p>
     <img class="imgPres" src="https://regledart.fr/wp-content/uploads/2021/08/exemple.png">
   </div>
+
+  <section class="map">
+		<div id="mapid"></div>
+
+		<script type="text/javascript">
+			var mymap = L.map('mapid').setView([48.61956366998409, 5.876319472182369], 15);
+
+			L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+				maxZoom: 18,
+				attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
+					'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+				id: 'mapbox/streets-v11',
+				tileSize: 512,
+				zoomOffset: -1
+			}).addTo(mymap);
+		</script>
+
+		<p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. A cras semper auctor neque vitae. Ante metus dictum at tempor. Nisl purus in mollis nunc. Sed turpis tincidunt id aliquet risus. Habitant morbi tristique senectus et netus. </p>
+	</section>
 </div>
 
 <script>

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
         {# Run `composer require symfony/webpack-encore-bundle`
@@ -14,6 +15,10 @@
             <link rel="preconnect" href="https://fonts.googleapis.com">
             <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
             <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital@1&display=swap" rel="stylesheet">
+
+            <!-- Leaflet -->
+            <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin=""/>
+   <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
         {% endblock %}
 
         {% block javascripts %}
@@ -95,6 +100,22 @@
 
         {% block body %}{% endblock %}
         </div>
+
+        <footer>
+            <img class="blason" src='/uploads/images/Blason_Gye_54.png'>
+            <div class="down">
+                <div class="lien-bas-droite">
+                    <a href="https://fr.wikipedia.org/wiki/Gye"><img src="/uploads/images/768px-Wikipedia_svg_logo.svg.png"></a>
+                    <a href=""><img src="/uploads/images/white-linkedin-icon.png"></a>
+                </div>
+                <ul>
+                    <li><a href="">contact</a></li>
+                    <li><a href="">à propos</a></li>
+                    <li><a href="">qui sommes nous</a></li>
+                    <li><a href="">mentions légales</a></li>
+                </ul>
+            </div>
+        </footer>
 
     </body>
 </html>
