@@ -10,6 +10,10 @@
             <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.7.2/dist/css/uikit.min.css" />
 
             <link rel="stylesheet" href="{{ asset('css/main.css') }}" />
+            <!-- UNUNTU FONT -->
+            <link rel="preconnect" href="https://fonts.googleapis.com">
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+            <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital@1&display=swap" rel="stylesheet">
         {% endblock %}
 
         {% block javascripts %}
@@ -76,7 +80,7 @@
 
     </nav>
     <!-- Fin Navbar -->
-        <div class="uk-container">
+        <div class="uk-container main">
 
     <!-- Flash messages -->
     {% for label, messages in app.flashes %}

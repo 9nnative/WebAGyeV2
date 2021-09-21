@@ -4,48 +4,54 @@
 
 {% block body %}
 
-<div class="uk-height-large uk-background-cover uk-light uk-flex" uk-parallax="bgy: -200" style="background-image: url('https://media.odalys-vacances.com/imgResize-2200-700/plus/v3/slider-location-vacances/location-vacances-campagne.jpg');">
+<div class="header uk-height-large uk-background-cover uk-light uk-flex" uk-parallax="bgy: -200">
 
-    <h1 class="uk-width-1-2@m uk-text-center uk-margin-auto uk-margin-auto-vertical">Bienvenue à Gye</h1>
+    <h1 class="titre">Bienvenue sur le site de la mairie de Gye</h1>
+    <div class="item">
+      <div class="field">
+        <div id="ui-user-search" class="uk-search-input">
+          <div class="ui icon input">
+            <input class="prompt search" type="text" placeholder="Rechercher ...">
+            <i class="users icon"></i>
+          </div>
+          <div class="results"></div>
+        </div>
+      </div>
+    </div>
 
 </div>
 
-<div class="item">
-  <div class="field">
-    <div id="ui-user-search" class="uk-search-input">
-      <div class="ui icon input">
-        <input class="prompt" type="text" placeholder="Rechercher ...">
-        <i class="users icon"></i>
+<div class="wrap">
+
+  <div class="uk-margin-top">
+      <h1>Nos dernières actualités</h1>
+  </div> 
+
+  {% for publication in allpublications %}
+  <article class="block-actu uk-article">
+    
+      <h1 class="uk-article-title"><a class="uk-link-reset" href="">{{publication.title|raw}}</a></h1>
+
+      <p class="uk-article-meta">Écrit par <a href="#">{{publication.publishedby.email}}</a> le {{publication.publishedat|format_datetime()}} 
+      
+      </p>
+
+      <p>{{publication.content|raw}}</p>
+
+      <div class="uk-grid-small uk-child-width-auto" uk-grid>
+      <a href="" uk-tooltip="title: Détails de la publication" uk-icon="info"></a>
+      <a href="" uk-tooltip="title: Modifier la publication" uk-icon="pencil"></a>
+      <a href="" uk-tooltip="title: Supprimer la publication" uk-icon="trash"></a>
       </div>
-      <div class="results"></div>
-    </div>
+
+  </article>
+  {% endfor %}
+
+  <div class="presentation uk-column-1-2">
+    <p>Lorem ipsum dolor sit amet. Eum rerum incidunt cum odio modi vel deleniti minus qui illo aspernatur At magnam eligendi. Aut facere voluptatem aut obcaecati laborum qui reprehenderit iste. Ab earum autem cum voluptatem sint est molestiae minima et illo fugiat vel cupiditate nihil aut optio voluptate in omnis dolorem? Sed voluptatem et corporis nihil quo sunt voluptas rem quod quia ea commodi repellendus qui soluta commodi vel eaque perspiciatis. Eos quisquam libero vel quos fugiat sed amet consequatur vel accusamus reprehenderit At illo maxime et accusantium temporibus. Eos voluptatibus veniam ut beatae eveniet et tempore corrupti eos itaque inventore ut omnis et voluptatem placeat ut magni necessitatibus. Qui itaque aspernatur est voluptatem velit aut error quibusdam et incidunt consectetur et voluptatem minus et itaque internos! Qui amet debitis cum numquam dolorum et dolorum commodi id autem sapiente ea necessitatibus iste ut mollitia voluptatem qui beatae aperiam. Id molestiae dolorum eum repellat omnis non dicta corporis hic architecto rerum et explicabo incidunt? Sit explicabo expedita cum excepturi molestias ut officiis nulla ab incidunt voluptas sit consectetur repudiandae sed eius neque non Quis ratione? Non minus rerum ad totam velit 33 assumenda illo ut sequi nulla et quas repudiandae.</p>
+    <img class="imgPres" src="https://regledart.fr/wp-content/uploads/2021/08/exemple.png">
   </div>
 </div>
-
-
-<div class="uk-margin-top">
-    <h1>Dernières actualités</h1>
-</div> 
-
-{% for publication in allpublications %}
-<article class="uk-article">
-   
-    <h1 class="uk-article-title"><a class="uk-link-reset" href="">{{publication.title|raw}}</a></h1>
-
-    <p class="uk-article-meta">Écrit par <a href="#">{{publication.publishedby.email}}</a> le {{publication.publishedat|format_datetime()}} 
-    
-    </p>
-
-    <p>{{publication.content|raw}}</p>
-
-    <div class="uk-grid-small uk-child-width-auto" uk-grid>
-    <a href="" uk-tooltip="title: Détails de la publication" uk-icon="info"></a>
-    <a href="" uk-tooltip="title: Modifier la publication" uk-icon="pencil"></a>
-    <a href="" uk-tooltip="title: Supprimer la publication" uk-icon="trash"></a>
-    </div>
-
-</article>
-{% endfor %}
 
 <script>
  $('#ui-user-search').search({

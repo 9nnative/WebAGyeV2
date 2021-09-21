@@ -31,7 +31,7 @@ class MainController extends AbstractController
     }
 
     /**
-     * @IsGranted("ROLE_EDITEUR")
+     * @IsGranted("ROLE_EDITOR")
      * @Route("/publications/new", name="add_publication")
      */
     public function addPublication(Request $request): Response

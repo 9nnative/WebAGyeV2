@@ -1,0 +1,58 @@
+html {
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.header {
+    background-image: url('../uploads/images/Italy_Scenery_Fields_464992_1920x1080.jpg');
+    width: 100% !important;
+    padding: 0 !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.uk-navbar-container{
+    margin-bottom: 0 !important;
+}
+
+.main{
+    padding: 0 !important;
+    margin: 0 !important;
+    max-width: unset;
+}
+
+.titre{
+    -webkit-text-stroke: 1px #fff;
+    color: #000 !important;
+    font-size: 60px;
+    width: 50%;
+    text-align: center;
+    font-weight: 600;
+    text-shadow: 0 4px 4px;
+}
+
+input.prompt{
+    width: 500px;
+    height: 40px;
+    border-radius: 2px;
+    border: none;
+    padding-left: 20px;
+}
+
+.wrap {
+    margin-right: 60px;
+    margin-left: 60px;
+}
+
+.block-actu{
+    border: 1px solid;
+}
+
+.presentation{
+    margin-top: 50px;
+}
+
+.presentation .imgPres{
+
+}
