@@ -29,3 +29,5 @@ Création de la base de données :
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
 -- Dump completed on 2021-09-21 10:40:56
+
+dans le .env : DATABASE_URL="mysql://root:password@127.0.0.1:3306/GYE2"
