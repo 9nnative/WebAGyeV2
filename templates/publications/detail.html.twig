@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Détails de la publication{% endblock %}
+
+{% block body %}
+
+<div class="uk-margin-top">
+        <h2>Détails de la publication</h2>
+</div>
+
+<article class="uk-article">
+
+    <h1 class="uk-article-title"><a class="uk-link-reset" href="">{{publication.title|raw}}</a></h1>
+
+    <p class="uk-article-meta">Écrit par {{publication.publishedby.email}} le {{publication.publishedat|format_datetime()}} </p>
+
+    <p class="uk-text-lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.</p>
+
+    <p>{{publication.content|raw}}</p>
+
+</article>
+
+
+
+
+
+
+
+{% endblock %}

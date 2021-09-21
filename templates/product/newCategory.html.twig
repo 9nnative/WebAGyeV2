@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Créer une catégorie{% endblock %}
+
+{% block body %}
+
+<div class="uk-margin">
+    <h1>Créer un album</h1>
+</div> 
+
+{{ form_start(albumForm) }}
+    <p>Donnez un nom à votre album :</p>
+    {{ form_widget(albumForm.name) }}
+
+    <button class="uk-button uk-button-default">{{ button_label|default('Sauvegarder') }}</button>
+{{ form_end(albumForm) }}
+
+{% endblock %}
