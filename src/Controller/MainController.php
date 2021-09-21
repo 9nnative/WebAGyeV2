@@ -5,15 +5,18 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Entity\Album;
 use App\Entity\Product;
+use App\Entity\Category;
 use App\Form\ProductType;
+use App\Form\CategoryType;
 use App\Entity\Publication;
 use App\Form\UserRightsType;
 use App\Form\PublicationType;
+use App\Repository\CategoryRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class MainController extends AbstractController
 {
@@ -44,6 +47,7 @@ class MainController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
 
             $date = new \DateTimeImmutable('now');
+            $publication->setIspublished(1);
             $publication->setPublishedAt($date);
             $publication->setPublishedBy($this->getUser());
             $entityManager = $this->getDoctrine()->getManager();
@@ -66,13 +70,6 @@ class MainController extends AbstractController
      */
     public function userDetails(): Response
     {  
-        $user=$this->getUser();
-        $user->setRoles( array('ROLE_ADMIN') );
-        $entityManager = $this->getDoctrine()->getManager();
-        $entityManager->persist($user);
-        $entityManager->flush();
-
-
         return $this->render('user/userdetails.html.twig');
     }
 
@@ -130,6 +127,44 @@ class MainController extends AbstractController
         return $this->render('product/index.html.twig', [
             'allimages' => $allimages,
             'allalbums' => $allalbums
+        ]);
+    }
+
+    /**
+     * @Route("/allpublications", name="all_publications")
+     */
+    public function publicationsGallery(Request $request): Response
+    {
+        //findAll sur les publications
+        $repository = $this->getDoctrine()->getRepository(Publication::class);
+        $allpublications = $repository->findAll();
+
+        //findall sur les catégories des publications
+        $repositoryCategory =  $this->getDoctrine()->getRepository(Category::class);
+        $allcategories = $repositoryCategory->findAll();
+
+        //formulaire catégories des publications       
+        $category = new Category();
+        $form = $this->createForm(CategoryType::class, $category);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($category);
+            
+            $entityManager->flush();
+
+            $this->addFlash('success', 'Catégorie créée !');
+            
+            return $this->redirectToRoute('all_publications');
+        }
+
+
+        return $this->render('publications/index.html.twig', [
+            'allpublications' => $allpublications,
+            'allcategories' => $allcategories,
+            'categoryForm' => $form->createView(),
         ]);
     }
 

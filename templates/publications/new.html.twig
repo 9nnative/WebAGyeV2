@@ -9,7 +9,20 @@
     <h3 class="uk-card-title">Ajouter une publication</h3>
 
     {{ form_start(publicationForm) }}
-
+        <div class ="uk-margin">
+        {{form_widget(publicationForm.title, {'attr': {'class': 'uk-input',
+        'placeholder': "Titre de la publication"}})}}
+        </div>
+        <div class="uk-margin">
+        {{form_widget(publicationForm.Content, {'attr': {
+        'placeholder': "Contenu de la publication"}})}}
+        </div>
+        <div class ="uk-margin">
+        <p>Choisir une catégorie :
+        <i>Il est possible de créer une catégorie sur la page<a href="{{ path('all_publications') }}">"Toutes les publications"</a></i></p>
+        {{form_widget(publicationForm.category, {'attr': {'class': 'uk-select',
+        'placeholder': "Choisir une catégorie"}})}}
+        </div>
     <button class="uk-button uk-button-default">{{ button_label|default('Sauvegarder') }}</button>
 
     {{ form_end(publicationForm) }}

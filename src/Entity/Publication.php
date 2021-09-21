@@ -42,6 +42,11 @@ class Publication
      */
     private $is_published;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="publications")
+     */
+    private $category;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -103,6 +108,18 @@ class Publication
     public function setIsPublished(bool $is_published): self
     {
         $this->is_published = $is_published;
+
+        return $this;
+    }
+
+    public function getCategory(): ?Category
+    {
+        return $this->category;
+    }
+
+    public function setCategory(?Category $category): self
+    {
+        $this->category = $category;
 
         return $this;
     }
