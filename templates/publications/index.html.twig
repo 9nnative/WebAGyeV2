@@ -52,8 +52,8 @@
             {% if is_granted('ROLE_ADMIN','ROLE_EDITOR') %}
             <p> {{publication.content|raw}}</p>
                 <div class="uk-grid-small uk-child-width-auto" uk-grid>
-                    <a href="" uk-tooltip="title: Détails de la publication" uk-icon="info"></a>
-                    <a href="" uk-tooltip="title: Modifier la publication" uk-icon="pencil"></a>
+                    <a href="/publication/{{publication.slug}}" uk-tooltip="title: Détails de la publication" uk-icon="info"></a>
+                    <a href="{{ path('edit_publication', { 'slug': publication.slug }) }}" uk-tooltip="title: Modifier la publication" uk-icon="pencil"></a>
                     <a href="" uk-tooltip="title: Supprimer la publication" uk-icon="trash"></a>
                 </div>
             {% endif %}

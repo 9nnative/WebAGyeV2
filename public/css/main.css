@@ -167,6 +167,10 @@ footer .down .lien-bas-droite img{
         margin-bottom: 10px;
     }
 
+    .uk-altert{
+        padding-bottom: 0px !important;
+    }
+
     footer .down ul li a{
         margin: unset;
     }
