@@ -3,15 +3,16 @@
 {% block title %}Liste des utilisateurs{% endblock %}
 
 {% block body %}
+<div class="wrap">
+    <div class="uk-margin-top">
+            <h2>Liste des utilisateurs</h2>
+    </div>
+    <ul class="uk-list uk-list-divider">
+        {% for user in allusers %}
 
-<div class="uk-margin-top">
-        <h2>Liste des utilisateurs</h2>
+            <li>{{user.email}} <a uk-tooltip="title: Modifier les droits de l'utilisateur" href="{{ path('userprivileges', {'id': user.id}) }}" uk-icon="icon: settings"></a></li>
+
+        {% endfor %}
+    </ul>
 </div>
-<ul class="uk-list uk-list-divider">
-    {% for user in allusers %}
-
-        <li>{{user.email}} <a uk-tooltip="title: Modifier les droits de l'utilisateur" href="{{ path('userprivileges', {'id': user.id}) }}" uk-icon="icon: settings"></a></li>
-
-    {% endfor %}
-</ul>
 {% endblock %}

@@ -3,20 +3,20 @@
 {% block title %}Détails de l'utilisateur{% endblock %}
 
 {% block body %}
+<div class="wrap">
+    <div class="uk-card uk-card-default uk-card-body">
+        <h3 class="uk-card-title">{{ app.user.email }}</h3>
 
-<div class="uk-card uk-card-default uk-card-body">
-    <h3 class="uk-card-title">{{ app.user.email }}</h3>
-
-<p>Rôles :</p>
-<ul class="uk-list">
-    {% for role in app.user.roles %}
-        {% if role == 'ROLE_ADMIN' %}
-        <li><span uk-icon="star"></span> Administrateur</li>
-        {% elseif role == 'ROLE_EDITOR' %}
-        <li><span uk-icon="quote-right"></span> Éditeur <li>
-        {% endif %}
-    {% endfor %}
-</ul>
+    <p>Rôles :</p>
+    <ul class="uk-list">
+        {% for role in app.user.roles %}
+            {% if role == 'ROLE_ADMIN' %}
+            <li><span uk-icon="star"></span> Administrateur</li>
+            {% elseif role == 'ROLE_EDITOR' %}
+            <li><span uk-icon="quote-right"></span> Éditeur <li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+    </div>
 </div>
-
 {% endblock %}

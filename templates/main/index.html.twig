@@ -24,11 +24,12 @@
 <div class="wrap">
 
   <div class="uk-margin-top">
-      <h1>Nos dernières actualités</h1>
+      <h1>Nos 5 dernières actualités</h1>
   </div> 
 
 <div class="uk-margin">
- {% for publication in allpublications %}
+ {% for publication in allpublications|slice(0,5)  %}
+  {% if publication.isPublished == 1 %}
         <div class="uk-margin uk-card uk-card-default uk-card-small uk-card-body">
             <h3 class="uk-card-title">{{publication.title|raw}}</h3>
             {% if publication.category is not null %}
@@ -37,12 +38,13 @@
             {% if is_granted('ROLE_ADMIN','ROLE_EDITOR') %}
             <p> {{publication.content|raw}}</p>
                 <div class="uk-grid-small uk-child-width-auto" uk-grid>
-                    <a href="" uk-tooltip="title: Détails de la publication" uk-icon="info"></a>
-                    <a href="" uk-tooltip="title: Modifier la publication" uk-icon="pencil"></a>
-                    <a href="" uk-tooltip="title: Supprimer la publication" uk-icon="trash"></a>
+                    <a href="/publication/{{publication.slug}}" uk-tooltip="title: Détails de la publication" uk-icon="info"></a>
+                    <a href="{{ path('edit_publication', { 'slug': publication.slug }) }}" uk-tooltip="title: Modifier la publication" uk-icon="pencil"></a>
+                    <a href="{{ path('archive_publication', { 'slug': publication.slug }) }}" uk-tooltip="title: Archiver la publication" uk-icon="lock"></a>
                 </div>
             {% endif %}
         </div>
+    {% endif %}
  {% endfor %}
 </div>
 
