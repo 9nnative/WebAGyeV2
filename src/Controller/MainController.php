@@ -208,4 +208,17 @@ class MainController extends AbstractController
         ]);
     }
 
+    /**
+     * @Route("/category/{slug}", name="publicationcategory_details")
+     */
+    public function publiCategory(Category $category = null) : Response
+    {   
+        $publications = $category->getPublications();
+      
+        return $this->render('publications/publiByCategory.html.twig', [
+            'publications' => $publications,
+        ]);
+    }
+
+    
 }

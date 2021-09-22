@@ -18,9 +18,5 @@
 /phpunit.xml
 .phpunit.result.cache
 ###< phpunit/phpunit ###
-<<<<<<< Updated upstream
 
-.env
-=======
-.env
->>>>>>> Stashed changes
+/.env

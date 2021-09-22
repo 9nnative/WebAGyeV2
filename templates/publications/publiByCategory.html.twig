@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Catégorie : {% endblock %}
+
+{% block body %}
+<div class="wrap">
+
+<div class="uk-margin-top">
+ {% for publication in publications %}
+  {% if publication.isPublished == 1 %}
+        <div class="uk-margin uk-card uk-card-default uk-card-small uk-card-body">
+            <h3 class="uk-card-title">{{publication.title|raw}}</h3>
+            {% if publication.category is not null %}
+            <span class="uk-label">Catégorie : {{publication.category.name}}</span>
+            {% endif %}
+            {% if is_granted('ROLE_ADMIN','ROLE_EDITOR') %}
+            <p> {{publication.content|raw}}</p>
+                <div class="uk-grid-small uk-child-width-auto" uk-grid>
+                    <a href="/publication/{{publication.slug}}" uk-tooltip="title: Détails de la publication" uk-icon="info"></a>
+                    <a href="{{ path('edit_publication', { 'slug': publication.slug }) }}" uk-tooltip="title: Modifier la publication" uk-icon="pencil"></a>
+                    <a href="{{ path('archive_publication', { 'slug': publication.slug }) }}" uk-tooltip="title: Archiver la publication" uk-icon="lock"></a>
+                </div>
+            {% endif %}
+        </div>
+    {% endif %}
+ {% endfor %}
+</div>
+
+</div>
+{% endblock %}

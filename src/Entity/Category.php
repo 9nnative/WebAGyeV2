@@ -34,6 +34,12 @@ class Category
      */
     private $publications;
 
+    /**
+     * Gedmo\Slug(fields={"name"})
+     * @ORM\Column(type="string", length=255)
+     */
+    private $slug;
+
     public function __construct()
     {
         $this->publications = new ArrayCollection();
@@ -94,6 +100,18 @@ class Category
                 $publication->setCategory(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    public function setSlug(string $slug): self
+    {
+        $this->slug = $slug;
 
         return $this;
     }

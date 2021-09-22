@@ -11,7 +11,7 @@
 <ul class="uk-list uk-list-striped">
  {% for category in allcategories %}
 
-    <li uk-tooltip="title:{{category.description}}"><a class="uk-link-text">{{category.name}}</a></li>
+    <li uk-tooltip="title:{{category.description}}"><a href="/category/{{category.slug}}" class="uk-link-text">{{category.name}}</a></li>
 
  {% endfor %}
 </ul>
