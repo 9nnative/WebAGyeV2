@@ -24,6 +24,12 @@
         {{form_widget(publicationForm.category, {'attr': {'class': 'uk-select',
         'placeholder': "Choisir une catégorie"}})}}
         </div>
+        <div class ="uk-margin">
+        <p>Choisir un album :
+        <i>Il est possible de créer un album sur la page<a href="{{ path('add_album') }}">"Créer un album"</a></i></p>
+        {{form_widget(publicationForm.album, {'attr': {'class': 'uk-select',
+        'placeholder': "Choisir un album"}})}}
+        </div>
     <button class="uk-button uk-button-default">{{ button_label|default('Sauvegarder') }}</button>
 
     {{ form_end(publicationForm) }}

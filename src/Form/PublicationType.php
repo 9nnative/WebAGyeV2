@@ -2,6 +2,7 @@
 
 namespace App\Form;
 
+use App\Entity\Album;
 use App\Entity\Category;
 use App\Entity\Publication;
 use Symfony\Component\Form\AbstractType;
@@ -28,6 +29,11 @@ class PublicationType extends AbstractType
                 'choice_label' => 'name',
   
               ])
+            ->add('album', EntityType::class, [
+                'class' => Album::class,
+                'multiple' => true,
+                'choice_label' => 'name',
+            ])
         ;
     }
 

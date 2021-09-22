@@ -36,6 +36,7 @@ class MainController extends AbstractController
     /**
      * @IsGranted("ROLE_EDITOR")
      * @Route("/publications/new", name="add_publication")
+     * @Route("/publications/edit/{slug}", name="edit_publication")
      */
     public function addPublication(Request $request): Response
     {
@@ -169,9 +170,9 @@ class MainController extends AbstractController
     }
 
     /**
-     * @Route("/publication/{title}", name="publication_details")
+     * @Route("/publication/{slug}", name="publication_details")
      */
-    public function publiDetails(Publication $publication = null ) : Response
+    public function publiDetails(Publication $publication = null) : Response
     {
 
         return $this->render('publications/detail.html.twig', [

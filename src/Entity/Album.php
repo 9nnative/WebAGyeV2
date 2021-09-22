@@ -29,9 +29,15 @@ class Album
      */
     private $products;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=Publication::class, mappedBy="Album")
+     */
+    private $publications;
+
     public function __construct()
     {
         $this->products = new ArrayCollection();
+        $this->publications = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -76,6 +82,33 @@ class Album
             if ($product->getCategory() === $this) {
                 $product->setCategory(null);
             }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Publication[]
+     */
+    public function getPublications(): Collection
+    {
+        return $this->publications;
+    }
+
+    public function addPublication(Publication $publication): self
+    {
+        if (!$this->publications->contains($publication)) {
+            $this->publications[] = $publication;
+            $publication->addAlbum($this);
+        }
+
+        return $this;
+    }
+
+    public function removePublication(Publication $publication): self
+    {
+        if ($this->publications->removeElement($publication)) {
+            $publication->removeAlbum($this);
         }
 
         return $this;

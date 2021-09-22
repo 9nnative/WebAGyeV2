@@ -74,7 +74,7 @@
 <script>
  $('#ui-user-search').search({
       type: 'category',
-      searchFields: ['Id', 'Title', 'Content','PublishedBy'],
+      searchFields: ['Id', 'Title','Slug'],
       fullTextSearch: true,
       onSelect: function onSelect(result, response) {
         console.log(result);
@@ -109,7 +109,7 @@
         category: function category(response) {
           var html = '';
           Object.keys(response.results).forEach(function(key) {
-            html += '<div class="content"><div class="title"><a href="/publication/'+ response.results[key].results[0].Title + '">'+ response.results[key].results[0].Title + '</a> ' + response.results[key].results[0].Content + '</div>';
+            html += '<div class="content"><div class="title"><a href="/publication/'+ response.results[key].results[0].Slug + '">'+ response.results[key].results[0].Title + '</a></div>';
           });
           return html;
         }
@@ -120,7 +120,7 @@ var mockArticles = [
 {% for article in allpublications %}
 { Id: '{{ article.id }}',
 Title: '{{ article.title }}',
-Content: '{{ article.content }}'}, 
+Slug: '{{ article.slug }}'}, 
 {% endfor %}
 ];
 </script>
