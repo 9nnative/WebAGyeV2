@@ -38,17 +38,19 @@ class MainController extends AbstractController
      * @Route("/publications/new", name="add_publication")
      * @Route("/publications/edit/{slug}", name="edit_publication")
      */
-    public function addPublication(Request $request): Response
+    public function addPublication(Request $request, Publication $publication = null): Response
     {
-
+        if (!$publication){
         $publication = new Publication();
+        }
+
         $form = $this->createForm(PublicationType::class, $publication);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
 
+            $publication->setIsPublished(1);
             $date = new \DateTimeImmutable('now');
-            $publication->setIspublished(1);
             $publication->setPublishedAt($date);
             $publication->setPublishedBy($this->getUser());
             $entityManager = $this->getDoctrine()->getManager();
@@ -57,13 +59,39 @@ class MainController extends AbstractController
 
             $this->addFlash('success', 'Article créé !');
             
-            return $this->redirectToRoute('main');
+            return $this->redirectToRoute('all_publications');
         }
 
         
         return $this->render('publications/new.html.twig', [
             'publicationForm' => $form->createView(),
         ]);
+    }
+
+    /**
+     * @IsGranted("ROLE_EDITOR")
+     * @Route("/publication/archive/{slug}", name="archive_publication")
+     */
+    public function archivePublication(Request $request, Publication $publication = null): Response
+    {
+        $state = $publication->getIsPublished();
+
+        if ($state == 0){
+            $publication->setIsPublished(1);
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($publication);
+            $entityManager->flush();
+            header("Refresh:0");
+            $this->addFlash('success', 'Article publié (public) !');
+        } elseif ($state == 1){
+            $publication->setIsPublished(0);
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($publication);
+            $entityManager->flush();
+            header("Refresh:0");
+            $this->addFlash('success', 'Article archivé !');
+        }
+        return $this->redirectToRoute('all_publications');
     }
 
     /**
