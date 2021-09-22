@@ -1,3 +1,7 @@
+body{
+    min-height: 100vh;
+}
+
 .header {
     background-image: url('../uploads/images/Italy_Scenery_Fields_464992_1920x1080.jpg');
     width: 100% !important;
@@ -8,9 +12,31 @@
     align-items: center;
 }
 
+.header .item .field .category .results .content .title{
+    background-color: rgb(80, 80, 80, 0.4);
+    border-radius: 1px;
+}
+
+.header .item .field .category .results .content .title a{
+    color: #000;
+    opacity: 100% ! important;
+}
+
 .uk-navbar-container{
     margin-bottom: 0 !important;
 }
+
+.uk-card-default{
+    min-height: 61.1vh;
+}
+
+.uk-card-small .uk-card-body, .uk-card-small.uk-card-body{
+    min-height: unset;
+}
+
+.place{
+    min-height: 61.1vh;
+} 
 
 .main{
     padding: 0 !important;
@@ -137,7 +163,7 @@ footer .down .lien-bas-droite img{
     .presentation img{
         width: 100%;
         height: auto;
-        margin-top: 20px;
+        margin-top: 25px !important;
     }
 
     .map #mapid{
